@@ -1,0 +1,53 @@
+.participant-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.button-list{
+    display: flex;
+    grid-gap: 20px;
+    gap: 20px;
+}
+
+.participant-card {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .participant-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive CSS for Buttons */
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
