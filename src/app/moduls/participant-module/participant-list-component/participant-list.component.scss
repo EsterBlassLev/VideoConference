@@ -5,6 +5,14 @@
     flex-direction: row;
 }
 
+.colorDetails{
+  background-color: white;
+  padding: auto;
+  margin: auto;
+  border-radius: 20px;
+  text-align: center;
+}
+
 .button-list{
     display: flex;
     grid-gap: 20px;
@@ -12,8 +20,11 @@
 }
 
 .participant-card {
-  background: #f9f9f9;
-  padding: 15px;
+  // background: #f9f9f9;
+  background-image: url('../../../../assets/images/men.jpeg');
+  background-repeat:no-repeat;
+  background-size: cover;
+  padding: 30px;
   border-radius: 5px;
 }
 

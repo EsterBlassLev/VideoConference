@@ -2,23 +2,24 @@
     <li *ngFor="let judge of participantsjudge" class="list-group-item">
         <div class="row participant-card">
             <div class="col-4">
+                <div class="colorDetails">
                   <p> {{judge.firstName}}  {{judge.lastName}}</p>
-               <p> {{judge.job}} </p >
+               <p> {{judge.job}} </p ></div>
                 <!-- <button> -->
                     <!-- <i *ngIf="judge.speaker" class="fa fa-microphone" aria-hidden="true"></i> 
                     <i *ngIf="!judge.speaker" class="fa-microphone-slash" aria-hidden="true"></i> -->
                 <!-- </button> -->
                 <div class="button-list">
-                <button onclick="toggleCamera(judge)">open camera
+                <button (click)="toggleCamera(judge)">open camera
                     <!-- <i *ngIf="judge.video" class="fa fa-video-camera" aria-hidden="true"></i> -->
                     <!-- <i *ngIf="!judge.video" class="fa fa-video-camera-slash" aria-hidden="true"></i> -->
                     <!-- <video id="videoElement" *ngIf="judge.video" autoplay></video> -->
                 </button>
-                <button *ngIf="!judge.sharedScreen" onclick="displayScreen(judge)">Display Screen</button>
-                <button *ngIf="judge.sharedScreen"  onclick="stopDisplay(judge)">Stop Display</button>
+                <button *ngIf="!judge.sharedScreen" (click)="displayScreen(judge)">Display Screen</button>
+                <button *ngIf="judge.sharedScreen"  (click)="stopDisplay(judge)">Stop Display</button>
                 <!-- <video id="videoElement" autoplay></video> -->
-                <button *ngIf="!judge.sharedScreen" onclick="startScreenRecording()">Screen recording</button>
-                <button *ngIf="judge.sharedScreen"  onclick="stopScreenRecording()">Stop Screen recording </button>
+                <button *ngIf="!judge.recording" (click)="startScreenRecording()">Screen recording</button>
+                <button *ngIf="judge.recording"  (click)="stopScreenRecording()">Stop Screen recording </button>
             </div>
             </div>
         </div>
@@ -28,27 +29,28 @@
     <li *ngFor="let other of participantsOthers" class="list-group-item">
         <div class="row participant-card">
             <div class="col-4">
+                <div class="colorDetails">
                   <p> {{other.firstName}}  {{other.lastName}}</p>
-               <p> {{other.job}} </p >
+               <p> {{other.job}} </p ></div>
                 <!-- <button> -->
                     <!-- <i *ngIf="other.speaker" class="fa fa-microphone" aria-hidden="true"></i> 
                     <i *ngIf="!other.speaker" class="fa-microphone-slash" aria-hidden="true"></i> -->
                 <!-- </button> -->
                 <div class="button-list">
-                <button onclick="toggleCamera(other)">
+                <button (click)="toggleCamera(other)">open camera
                     <i *ngIf="other.video" class="fa fa-video-camera" aria-hidden="true"></i> 
                      <i *ngIf="!other.video" class="fa fa-video-camera-slash" aria-hidden="true"></i>
                     <!-- <video id="videoElement" *ngIf="other.video" autoplay></video> -->
                 </button>
-                <button *ngIf="!other.sharedScreen" onclick="displayScreen(other)">Display Screen</button>
-                <button *ngIf="other.sharedScreen"  onclick="stopDisplay(other)">Stop Display</button>
+                <button *ngIf="!other.sharedScreen" (click)="displayScreen(other)">Display Screen</button>
+                <button *ngIf="other.sharedScreen"  (click)="stopDisplay(other)">Stop Display</button>
                 <!-- <video id="videoElement" autoplay></video> -->
-                <button *ngIf="!other.sharedScreen" onclick="startScreenRecording()">Screen recording</button>
-                <button *ngIf="other.sharedScreen"  onclick="stopScreenRecording()">Stop Screen recording </button>
+                <button *ngIf="!other.sharedScreen" (click)="startScreenRecording()">Screen recording</button>
+                <button *ngIf="other.sharedScreen"  (click)="stopScreenRecording()">Stop Screen recording </button>
             </div>
             </div>
         </div>
         <!-- <button routerLink="/participant/{{other.id}}" class="col-1">עריכה</button><span>   </span> -->
-        <!-- <button onclick="deletParticipantFromList(other)" class="col-1">Delete</button> -->
+        <!-- <button (click)="deletParticipantFromList(other)" class="col-1">Delete</button> -->
     </li>
 </ul>

@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ParticipantService } from '../ParticipantService';
 import { Participant } from '../../../models/participant';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Participant } from '../../../models/participant';
 
 export class ParticipantListComponent implements OnInit {
 
-  constructor(private _participantService:ParticipantService, private _cdr: ChangeDetectorRef) {  }
+  constructor(private _participantService:ParticipantService, private _cdr: ChangeDetectorRef, private _router: Router) {  }
 
   subscribtion:Subscription | undefined;
   participantsjudge: Participant[]=[];
@@ -24,6 +25,8 @@ export class ParticipantListComponent implements OnInit {
   screenStream:any;
   mediaRecorder: MediaRecorder | undefined;
   recordedChunks: Blob[] = [];
+  @ViewChild('video', { static: true }) video: ElementRef;
+  videoStream: any;
 
   ngOnInit(): void {
     // this.subscribtion=this._participantService.getAllParticipants().subscribe(data=>{
@@ -33,6 +36,10 @@ export class ParticipantListComponent implements OnInit {
     this.participantsjudge = this._participantService.getAllParticipantsjudge();
     this.participantsOthers = this._participantService.getAllParticipantsOthers();
     this.videoElement = document.getElementById('videoElement');
+  }
+
+  details(participant:Participant){
+    this._router.navigate(["/participant/"+participant.id]);
   }
 
   async toggleCamera() {
@@ -88,10 +95,11 @@ export class ParticipantListComponent implements OnInit {
     } catch (error) {
       console.error('Error starting screen recording:', error);
     }
+    // part.recording =!part.recording;
   }
 
   stopScreenRecording(part:Participant) {
-    part.recording=!part.recording;
+    // part.recording=!part.recording;
     if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
       this.mediaRecorder.stop();
     }
