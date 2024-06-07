@@ -14,7 +14,7 @@ import { OpenTeamModule } from "./moduls/open-team/open-team.module";
 export const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "home"},
     { path: "participants", component: ParticipantListComponent },
-    {path: "details", component: ParticipantDetailsComponent},
+    {path: "details/:id", component: ParticipantDetailsComponent},
     {path: "open", component: OpenTeamComponent},
     { path: "**", component: PageNotFountComponent }
 ];

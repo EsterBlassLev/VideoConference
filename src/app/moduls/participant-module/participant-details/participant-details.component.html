@@ -1,6 +1,13 @@
-<div *ngIf="participant" class="card">
+<div class="card">
     <div class="card-body" id="card">
         <form [formGroup]="participantForm">
+            <div class="form-group">
+                <label>id:</label>
+                <div>
+                    <input type="text" class="form-control" name="participantid" formControlName="id">
+                        <div *ngIf="participantForm.controls['id'].errors?.required && participantForm.controls['id'].touched"  class="alert alert-danger">this field is required</div>
+                </div>
+            </div>
             <div class="form-group">
                 <label>first name:</label>
                 <div>
@@ -20,29 +27,12 @@
             <div class="form-group">
                 <label>job:</label>
                 <div>
-                    <input type="text" class="form-control" name="participantjob" formControlName="job">
-                        <div *ngIf="participantForm.controls['job'].errors?.required && participantForm.controls['job'].touched"  class="alert alert-danger">this field is required</div>
+                    <select  class="responsive-select"  formControlName="job">
+                        <option *ngFor="let value of enumValues" [ngValue]="value">{{value}}</option> 
+                    </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label>speaker:</label>
-                <div>
-                    <input type="text" class="form-control" name="participantspeaker" formControlName="speaker">
-                        <div *ngIf="participantForm.controls['speaker'].errors?.required && participantForm.controls['speaker'].touched"  class="alert alert-danger">this field is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>video:</label>
-                <div>
-                    <!-- <input type="text" class="form-control" name="participantvideo" formControlName="video" [ngClass]="{ 
-                        'invalid': participantForm.controls['video'].invalid, 
-                        'valid': participantForm.controls['video'].valid 
-                      }">      -->
-                      <input type="text" class="form-control" name="participantvideo" formControlName="video">                  
-                        <div *ngIf="participantForm.controls['video'].errors?.required && participantForm.controls['video'].touched"  class="alert alert-danger">this field is required</div>
-                </div>
-            </div>
-            <button onclick="saveParticipant()" [disabled]="participantForm.touched && participantForm.invalid">Save</button>
+            <button (click)="saveParticipant()" [disabled]="participantForm.controls['id'].invalid || participantForm.controls['firstName'].invalid || participantForm.controls['lastName'].invalid || participantForm.controls['job'].invalid">Save</button>
         </form>
     </div>
 </div>

@@ -4,10 +4,11 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, In
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Participant } from "../../../models/participant";
+import { participantType } from "src/app/models/userType.enum";
 
 
 @Component({
-  selector: 'app-participant-details',
+  selector: 'app-participant-details.component',
   templateUrl: './participant-details.component.html',
   styleUrls: ['./participant-details.component.scss']
   //changeDetection:ChangeDetectionStrategy.OnPush
@@ -57,13 +58,13 @@ export class ParticipantDetailsComponent implements OnInit {
     "firstName": new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
     "lastName": new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
     "job": new FormControl("", [Validators.required]),
-    "speaker": new FormControl("", [Validators.required]),
-    "video": new FormControl("", [Validators.required]),
+    "speaker": new FormControl("", []),
+    "video": new FormControl("", []),
   })
 
   participantToSend: Participant = new Participant();
-
-  saveVolunteer() {
+   enumValues = Object.values(participantType);
+   saveParticipant() {
     this.participantToSend.id = this.participantForm.controls["id"].value;
     this.participantToSend.firstName = this.participantForm.controls["firstName"].value;
     this.participantToSend.lastName = this.participantForm.controls["lastName"].value;
