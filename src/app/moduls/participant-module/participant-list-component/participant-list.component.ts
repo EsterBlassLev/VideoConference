@@ -42,7 +42,7 @@ export class ParticipantListComponent implements OnInit {
   }
 
   details(participant:Participant){
-    this._router.navigate(["/participant/"+participant.id]);
+    this._router.navigate(["/details/"+participant.id]);
   }
 
   async toggleCamera() {
@@ -120,7 +120,6 @@ export class ParticipantListComponent implements OnInit {
     a.click();
     window.URL.revokeObjectURL(url);
   }
-
 
   // ngOnDestroy(): void {
   //   this.subscribtion.unsubscribe();

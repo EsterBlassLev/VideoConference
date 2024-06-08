@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OpenTeam } from './models/openTeam';
+import { Participant } from './models/participant';
 
 @Component({
   selector: 'app-root',

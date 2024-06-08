@@ -9,6 +9,7 @@
                 <i *ngIf="!judge.video" class="fa fa-video-camera-slash" aria-hidden="true"></i>
             </div>
         </div>
+        <!-- <button  (click)="details(judge)">edit details </button> -->
     </li>
 </ul><br><br>
 <ul class="list-group participant-list">
@@ -18,19 +19,19 @@
                 <div class="colorDetails">
                   <p> {{other.firstName}}  {{other.lastName}}</p>
                <p> {{other.job}} </p ></div>
-                <i *ngIf="other.video" class="fa fa-video-camera" aria-hidden="true"></i> 
-                <i *ngIf="!other.video" class="fa fa-video-camera-slash" aria-hidden="true"></i>
+                <i *ngIf="other.video" class="fas fa-video-camera" aria-hidden="true"></i> 
+                <i *ngIf="!other.video" class="fas fa-video-camera-slash" aria-hidden="true"></i>
             </div>
         </div>
     </li>
 </ul>
 <!-- עניין הכפתורים לא מושלם היה כתוב שאין צורך לממש 
  בכל אופן ממשתי כמה שהספקתי
- יש שיתוף מסך מצלמה והסרטה כאשר הם עובדים חלקם לא באופן מושלם -->
+ יש שיתוף מסך מצלמה והסרטה כאשר הם עובדים חלקם לא באופן מושלם משום מה לא הוצגו ל ה I לכן ז מוסלש -->
 <div class="button-list" style="display: flex;justify-content: center;margin-top: 15px;">
     <button (click)="toggleCamera()">open camera
-        <i *ngIf="video" class="fa fa-video-camera" aria-hidden="true"></i> 
-         <i *ngIf="!video" class="fa fa-video-camera-slash" aria-hidden="true"></i>
+        <!-- <i *ngIf="video" class="fa fa-video-camera" aria-hidden="true"></i> 
+         <i *ngIf="!video" class="fa fa-video-camera-slash" aria-hidden="true"></i> -->
         <!-- <video id="videoElement" *ngIf="other.video" autoplay></video> -->
     </button>
     <button *ngIf="!sharedScreen" (click)="displayScreen()">Display Screen</button>
@@ -46,6 +47,7 @@
     margin-top: -300px;
     padding-bottom: 300px;
     "> 
+    <!-- הכפתורים לא באמת מובילים לאנשהו מסיבת הזמן -->
        <button>אנשים: {{participants}}</button>
         <button>פרטי דיון</button>
         <button>מנהל דיון</button>

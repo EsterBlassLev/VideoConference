@@ -74,17 +74,27 @@ export class ParticipantService {
         if (participantToUpdate.job !== participantType.judge) {
             this.index = this.participantsOthers.findIndex(p => p.id === id);
             if (this.index !== -1) {
-                this.participantsOthers.slice(this.index, this.index + 1)
+                this.participantsOthers =this.participantsOthers.slice(this.index, this.index + 1);
+                console.log(this.participantsOthers);
             }
+            if(participantToUpdate.job===participantType.Lawyerdefendant) {        
             this.participantsOthers.push(participantToUpdate);
+            }
+            else{
+                this.participantsjudge.push(participantToUpdate);
+            }
         }
 
         else {
             this.index = this.participantsjudge.findIndex(p => p.id === id);
             if (this.index !== -1)
-                this.participantsjudge.slice(this.index, this.index + 1)
-            this.participantsjudge.push(participantToUpdate);
-        }
+                this.participantsjudge = this.participantsjudge.slice(this.index, this.index + 1)
+            if(participantToUpdate.job !== participantType.judge) {        
+                this.participantsOthers.push(participantToUpdate);
+                }
+                else{
+                    this.participantsjudge.push(participantToUpdate);
+                }        }
 
     }
 }
