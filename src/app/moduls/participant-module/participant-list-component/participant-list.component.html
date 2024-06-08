@@ -5,22 +5,8 @@
                 <div class="colorDetails">
                   <p> {{judge.firstName}}  {{judge.lastName}}</p>
                <p> {{judge.job}} </p ></div>
-                <!-- <button> -->
-                    <!-- <i *ngIf="judge.speaker" class="fa fa-microphone" aria-hidden="true"></i> 
-                    <i *ngIf="!judge.speaker" class="fa-microphone-slash" aria-hidden="true"></i> -->
-                <!-- </button> -->
-                <div class="button-list">
-                <button (click)="toggleCamera(judge)">open camera
-                    <!-- <i *ngIf="judge.video" class="fa fa-video-camera" aria-hidden="true"></i> -->
-                    <!-- <i *ngIf="!judge.video" class="fa fa-video-camera-slash" aria-hidden="true"></i> -->
-                    <!-- <video id="videoElement" *ngIf="judge.video" autoplay></video> -->
-                </button>
-                <button *ngIf="!judge.sharedScreen" (click)="displayScreen(judge)">Display Screen</button>
-                <button *ngIf="judge.sharedScreen"  (click)="stopDisplay(judge)">Stop Display</button>
-                <!-- <video id="videoElement" autoplay></video> -->
-                <button *ngIf="!judge.recording" (click)="startScreenRecording()">Screen recording</button>
-                <button *ngIf="judge.recording"  (click)="stopScreenRecording()">Stop Screen recording </button>
-            </div>
+                <i *ngIf="judge.video" class="fa fa-video-camera" aria-hidden="true"></i> 
+                <i *ngIf="!judge.video" class="fa fa-video-camera-slash" aria-hidden="true"></i>
             </div>
         </div>
     </li>
@@ -32,25 +18,34 @@
                 <div class="colorDetails">
                   <p> {{other.firstName}}  {{other.lastName}}</p>
                <p> {{other.job}} </p ></div>
-                <!-- <button> -->
-                    <!-- <i *ngIf="other.speaker" class="fa fa-microphone" aria-hidden="true"></i> 
-                    <i *ngIf="!other.speaker" class="fa-microphone-slash" aria-hidden="true"></i> -->
-                <!-- </button> -->
-                <div class="button-list">
-                <button (click)="toggleCamera(other)">open camera
-                    <i *ngIf="other.video" class="fa fa-video-camera" aria-hidden="true"></i> 
-                     <i *ngIf="!other.video" class="fa fa-video-camera-slash" aria-hidden="true"></i>
-                    <!-- <video id="videoElement" *ngIf="other.video" autoplay></video> -->
-                </button>
-                <button *ngIf="!other.sharedScreen" (click)="displayScreen(other)">Display Screen</button>
-                <button *ngIf="other.sharedScreen"  (click)="stopDisplay(other)">Stop Display</button>
-                <!-- <video id="videoElement" autoplay></video> -->
-                <button *ngIf="!other.sharedScreen" (click)="startScreenRecording()">Screen recording</button>
-                <button *ngIf="other.sharedScreen"  (click)="stopScreenRecording()">Stop Screen recording </button>
-            </div>
+                <i *ngIf="other.video" class="fa fa-video-camera" aria-hidden="true"></i> 
+                <i *ngIf="!other.video" class="fa fa-video-camera-slash" aria-hidden="true"></i>
             </div>
         </div>
-        <!-- <button routerLink="/participant/{{other.id}}" class="col-1">עריכה</button><span>   </span> -->
-        <!-- <button (click)="deletParticipantFromList(other)" class="col-1">Delete</button> -->
     </li>
 </ul>
+<div class="button-list" style="display: flex;justify-content: center;margin-top: 15px;">
+    <button (click)="toggleCamera()">open camera
+        <i *ngIf="video" class="fa fa-video-camera" aria-hidden="true"></i> 
+         <i *ngIf="!video" class="fa fa-video-camera-slash" aria-hidden="true"></i>
+        <!-- <video id="videoElement" *ngIf="other.video" autoplay></video> -->
+    </button>
+    <button *ngIf="!sharedScreen" (click)="displayScreen()">Display Screen</button>
+    <button *ngIf="sharedScreen"  (click)="stopDisplay()">Stop Display</button>
+    <!-- <video id="videoElement" autoplay></video> -->
+    <button *ngIf="!sharedScreen" (click)="startScreenRecording()">Screen recording</button>
+    <button *ngIf="sharedScreen"  (click)="stopScreenRecording()">Stop Screen recording </button>
+</div>
+<footer>
+    <div style="display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-top: -300px;
+    padding-bottom: 300px;
+    "> 
+       <button>אנשים: {{participants}}</button>
+        <button>פרטי דיון</button>
+        <button>מנהל דיון</button>
+        <button>הגדרות</button>
+    </div> 
+</footer>

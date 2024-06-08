@@ -25,9 +25,11 @@ export class ParticipantListComponent implements OnInit {
   screenStream:any;
   mediaRecorder: MediaRecorder | undefined;
   recordedChunks: Blob[] = [];
+  sharedScreen:boolean = false;
+  recording:boolean = false;
   @ViewChild('video', { static: true }) video: ElementRef;
   videoStream: any;
-
+  participants:number;
   ngOnInit(): void {
     // this.subscribtion=this._participantService.getAllParticipants().subscribe(data=>{
     //   this.participants=data;
@@ -36,6 +38,7 @@ export class ParticipantListComponent implements OnInit {
     this.participantsjudge = this._participantService.getAllParticipantsjudge();
     this.participantsOthers = this._participantService.getAllParticipantsOthers();
     this.videoElement = document.getElementById('videoElement');
+    this.participants = this.participantsjudge.length+this.participantsOthers.length
   }
 
   details(participant:Participant){
@@ -60,18 +63,18 @@ export class ParticipantListComponent implements OnInit {
 
   }
 
-  async displayScreen(part:Participant) {
+  async displayScreen() {
     try {
       this.screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
       this.videoElement.srcObject = this.screenStream;
     } catch (error) {
       console.error('Error displaying screen:', error);
     }
-    part.sharedScreen=!part.sharedScreen;
+    this.sharedScreen=!this.sharedScreen;
   }
 
-  stopDisplay(part:Participant) {
-    part.sharedScreen=!part.sharedScreen;
+  stopDisplay() {
+    this.sharedScreen=!this.sharedScreen;
     if (this.screenStream) {
       this.screenStream.getTracks().forEach((track: { stop: () => any; }) => track.stop());
       this.videoElement.srcObject = null;
@@ -79,7 +82,7 @@ export class ParticipantListComponent implements OnInit {
     }
   }
 
-  async startScreenRecording(part:Participant) {
+  async startScreenRecording() {
     try {
       this.screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
 
@@ -91,14 +94,14 @@ export class ParticipantListComponent implements OnInit {
       };
 
       this.mediaRecorder.start();
-      part.recording=!part.recording;
+      this.recording=!this.recording;
     } catch (error) {
       console.error('Error starting screen recording:', error);
     }
     // part.recording =!part.recording;
   }
 
-  stopScreenRecording(part:Participant) {
+  stopScreenRecording() {
     // part.recording=!part.recording;
     if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
       this.mediaRecorder.stop();

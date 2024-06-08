@@ -1,40 +1,32 @@
 .participant-list {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-direction: row;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-direction: row;
 }
 
-.colorDetails{
-  background-color: white;
+.colorDetails {
   padding: auto;
   margin: auto;
   border-radius: 20px;
   text-align: center;
 }
 
-.button-list{
-    display: flex;
-    grid-gap: 20px;
-    gap: 20px;
+.button-list {
+  display: flex;
+  grid-gap: 20px;
+  gap: 20px;
 }
 
 .participant-card {
   // background: #f9f9f9;
   background-image: url('../../../../assets/images/men.jpeg');
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
   padding: 30px;
   border-radius: 5px;
 }
 
-@media screen and (max-width: 768px) {
-  .participant-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Responsive CSS for Buttons */
 button {
   display: inline-block;
   padding: 10px 20px;
@@ -47,18 +39,41 @@ button {
   cursor: pointer;
 }
 
-/* Responsive Design */
-@media only screen and (max-width: 768px) {
-  button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
+footer div button {
+  margin-bottom: 15px;
+  background-color: transparent;
 }
+
+/* Responsive Design */
+
 
 @media only screen and (max-width: 480px) {
   button {
     padding: 6px 12px;
     font-size: 12px;
   }
-}
 
+  @media screen and (max-width: 768px) {
+    .participant-list {
+      grid-template-columns: 1fr;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    footer div {
+      flex-direction: row !important;
+      justify-content: center !important;
+      margin-top: 10px !important;
+      padding-bottom: 10px !important;
+    }
+
+    footer div button {
+      margin: auto;
+    }
+
+  }
+
+}
