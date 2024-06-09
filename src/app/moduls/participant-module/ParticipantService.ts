@@ -5,6 +5,9 @@ import { Router } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Participant } from "../../models/participant";
 import { participantType } from "../../models/userType.enum";
+// כרגע בגלל שאין חיבור לSERVER 
+// אמיתי שמתי משתנים מקומיים ועליהם הפעלתי את הפונקציות 
+// אבל בהערה שמתי את הפונקציה האמיתית שאמורה להיות בפרויקט אמיתי
 
 @Injectable()
 export class ParticipantService {
